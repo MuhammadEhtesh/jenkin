@@ -11,16 +11,15 @@ pipeline {
     stages {
         stage("clean workspace"){
             steps{
-                try{
-                    bat 1/0;
-                    cleanWs();
-                }
-                catch(e){
-                    script {
+                script {
+                    try{
+                        bat 1/0;
+                        cleanWs();
+                    }
+                    catch(e){
                         PIPELINE_ERROR = e;
                     }
                 }
-                
             }
         }
 
