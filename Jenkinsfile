@@ -5,7 +5,7 @@ pipeline {
             Appcmd = "C:\\Windows\\System32\\inetsrv\\appcmd.exe"
             Nuget = credentials('Nuget')
             CURRENT_BRANCH = "${GIT_BRANCH}"
-            Error = ""
+            PIPELINE_ERROR = ""
         }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
                 }
                 catch(e){
                     script {
-                        Error = e;
+                        PIPELINE_ERROR = e;
                     }
                 }
                 
