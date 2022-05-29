@@ -48,7 +48,11 @@ pipeline {
                             fileCopyOperation(excludes: "", flattenFiles: true, includes: "log", targetLocation: "${workspace}\\LogFileFolder")
                             ])
             }
-            emailext attachLog: true, attachmentsPattern: "${workspace}\\LogFileFolder\\*.*", body: "Pipeline failed.", subject: "Build Failed: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
+
+            dir("${workspace}\\LogFileFolder"){
+                    fileOperations([fileRenameOperation(destination: 'log.txt', source: 'log')])
+                }
+            emailext attachLog: true, attachmentsPattern: "${workspace}\\LogFileFolder\\log.txt", body: "Pipeline failed.", subject: "Build Failed: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
         }
     }
 }
