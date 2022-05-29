@@ -9,11 +9,19 @@ pipeline {
         }
 
     stages {
+
+        stage("Stage 1") {
+            steps {
+                script {
+                    error "This pipeline stops here!"
+                }
+            }
+        }
+        
         stage("clean workspace"){
             steps{
                 script {
                     try{
-                        currentBuild.result = 'FAILURE'
                         cleanWs();
                     }
                     catch(e){
