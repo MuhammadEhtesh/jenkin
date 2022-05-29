@@ -43,10 +43,11 @@ pipeline {
             emailext attachLog: true, body: "Pipeline successful.", subject: "Build Success: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
         }
         failure {
-            dir("${JENKINS_HOME}\\jobs\\jenkin\\branches\\${GIT_BRANCH}\\builds\\${BUILD_NUMBER}"){
+            dir("${JENKINS_HOME}\\jobs\\jenkin\\branches\\${GIT_BRANCH}\\builds\\${BUILD_NUMBER}") {
                         fileOperations([
                             fileCopyOperation(excludes: "", flattenFiles: true, includes: "log", targetLocation: "${workspace}\\LogFileFolder")
                             ])
+            }
             emailext attachLog: true, attachmentsPattern: "${workspace}\\LogFileFolder\\log", body: "Pipeline failed.", subject: "Build Failed: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
         }
     }
