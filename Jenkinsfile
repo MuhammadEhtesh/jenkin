@@ -31,10 +31,10 @@ pipeline {
     }
     post {
         success {
-            emailext attachLog: false, body: "Pipeline successful.", subject: "Build Success: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
+            emailext attachLog: true, body: "Pipeline successful.", subject: "Build Success: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
         }
         failure {
-            emailext attachLog: false, attachmentsPattern: "${JENKINS_HOME}\\jobs\\jenkin\\branches\\${GIT_BRANCH}\\builds\\${BUILD_NUMBER}\\log*", body: "Pipeline failed.", subject: "Build Failed: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
+            emailext attachLog: true, attachmentsPattern: "${JENKINS_HOME}\\jobs\\jenkin\\branches\\${GIT_BRANCH}\\builds\\${BUILD_NUMBER}\\log*", body: "Pipeline failed.", subject: "Build Failed: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
         }
     }
 }
