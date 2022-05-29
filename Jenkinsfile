@@ -12,7 +12,9 @@ pipeline {
 
         stage("Stage 1") {
            steps {
-               def file = new File("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log").collect {it}
+               script {
+                   def file = new File("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log").collect {it}
+               }
            }
         }
 
