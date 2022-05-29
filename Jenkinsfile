@@ -20,7 +20,7 @@ pipeline {
         // }
         stage("clean workspace"){
             steps{
-                error 'Throw erro'
+                
                 script {
                     try{
                         cleanWs();
@@ -35,6 +35,7 @@ pipeline {
         stage ('git code checkout') {
             steps {
                     checkout scm
+                    error 'Throw erro'
                 }
             }
     }
