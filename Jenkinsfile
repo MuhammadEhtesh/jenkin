@@ -48,7 +48,7 @@ pipeline {
                             fileCopyOperation(excludes: "", flattenFiles: true, includes: "log", targetLocation: "${workspace}\\LogFileFolder")
                             ])
             }
-            emailext attachLog: true, attachmentsPattern: "${workspace}\\LogFileFolder\\", body: "Pipeline failed.", subject: "Build Failed: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
+            emailext attachLog: true, attachmentsPattern: "${workspace}\\LogFileFolder\\*.*", body: "Pipeline failed.", subject: "Build Failed: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
         }
     }
 }
