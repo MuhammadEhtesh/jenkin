@@ -17,7 +17,7 @@ pipeline {
                         error "This pipeline stops here!"
                     }
                     catch(e){
-                        bat "echo Error in pipeline"
+                        bat "echo " + e
                     }
                 }
             }
