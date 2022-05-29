@@ -13,7 +13,7 @@ pipeline {
             steps{
                 script {
                     try{
-                        error('pipeline failed')
+                        bat 1/0*;
                         cleanWs();
                     }
                     catch(e){
