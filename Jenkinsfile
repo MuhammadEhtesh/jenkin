@@ -12,13 +12,16 @@ pipeline {
 
         stage("Stage 1") {
             steps {
-                script {
-                    try{
-                        error "This pipeline stops here!"
-                    }
-                    catch(e){
-                        bat "echo " + e
-                    }
+                catchError {
+                    error 'Error occurred.'
+                }
+            }
+            post {
+                success {
+                    echo 'Stage 1 Executed Successfully.'
+                }
+                failure {
+                    echo 'State 1 Failed'
                 }
             }
         }
