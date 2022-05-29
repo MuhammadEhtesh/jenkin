@@ -13,11 +13,16 @@ pipeline {
         stage("Stage 1") {
             steps {
                 script {
-                    error "This pipeline stops here!"
+                    try{
+                        error "This pipeline stops here!"
+                    }
+                    catch(e){
+                        bat "echo Error in pipeline"
+                    }
                 }
             }
         }
-        
+
         stage("clean workspace"){
             steps{
                 script {
