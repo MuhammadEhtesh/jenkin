@@ -61,6 +61,6 @@ node {
         error 'This pipeline fail.'
     }
     catch(e){
-        echo e;
+        emailext attachLog: false, body: "Pipeline failed with error: " + e, subject: "Pipeline Failed, Job name: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
     }
 }
