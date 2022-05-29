@@ -9,16 +9,6 @@ pipeline {
         }
 
     stages {
-
-        stage("Stage 1") {
-           steps {
-               script {
-                   def file = new File("${JENKINS_HOME}/jobs/${JOB_NAME}/branches/${GIT_BRANCH}/builds/${BUILD_NUMBER}/log").collect {it}
-                   bat "echo ${file}"
-               }
-           }
-        }
-
         stage("clean workspace"){
             steps{
                 script {
