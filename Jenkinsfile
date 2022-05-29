@@ -61,7 +61,7 @@ node {
         error 'This pipeline fail.'
     }
     catch(e){
-        //new File("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log").collect {it}
+        def file = new File("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log").collect {it}
         emailext attachLog: true, body: "Pipeline failed with error: ${e}", subject: "Pipeline Failed, Job name: ${JOB_NAME} | ${BUILD_NUMBER}.", to: "muhammadehteshambhatti@gmail.com", mimeType: "text/html"
     }
 }
