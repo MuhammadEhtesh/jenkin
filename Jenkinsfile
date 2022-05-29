@@ -13,7 +13,7 @@ pipeline {
             steps{
                 script {
                     try{
-                        sh "exit 1"
+                        currentBuild.result = 'FAILURE'
                         cleanWs();
                     }
                     catch(e){
